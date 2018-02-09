@@ -1454,8 +1454,11 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 20
   theDude: {fileID: 1802441776}
-  gravityScale: 4
+  gravityScale: 5
   anim: {fileID: 1335245858}
+  pivot: {fileID: 35993197}
+  rotateSpeed: 10
+  playerModel: {fileID: 1961750913}
 --- !u!23 &1802441778
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1694,3 +1697,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1961750913 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: c9a7cbe277b9003489df414b7cb05b4b, type: 3}
+  m_PrefabInternal: {fileID: 815087844}
