@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    
     public float moveSpeed;
     public float jumpForce;
     public CharacterController theDude;
     public float gravityScale;
     private Vector3 moveDirection;
+
+    public Animator anim;
     // Use this for initialization
     void Start()
     {
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviour
         //Reset the y axis
         moveDirection.y = yStore;
 
+        // Values used in the animations
+        anim.SetBool("isGrounded", theDude.isGrounded);
+        anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + (Mathf.Abs(Input.GetAxis("Horizontal")))));
+
         //Coutneract gravity so falling off of a ledge looks more normal
         if (theDude.isGrounded)
         {
@@ -49,5 +55,6 @@ public class PlayerController : MonoBehaviour
 
         //Move the character and normalize for framerate
         theDude.Move(moveDirection * Time.deltaTime);
+
     }
 }
