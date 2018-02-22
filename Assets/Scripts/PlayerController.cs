@@ -18,44 +18,82 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed;
     public GameObject playerModel;
 
+    private int jumpNum;
+    private bool touchWall;
+
+    private bool isMoving;
+
     // Use this for initialization
     void Start()
-    {
-        //theDude = GetComponent<Rigidbody>();
+    {   
+        touchWall = false;
+        isMoving = false;
+        // theDude = GetComponent<Rigidbody>();
         theDude = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Save the y axis to keep jumping consistent
+        // Save the y axis to keep jumping consistent
         float yStore = moveDirection.y;
 
-        //Move based on the x and y orientation
+        // Move based on the x and y orientation
         moveDirection = (transform.forward * Input.GetAxis("Vertical") * moveSpeed) + (transform.right * Input.GetAxis("Horizontal") * moveSpeed);
         moveDirection = moveDirection.normalized * moveSpeed;
 
-        //Reset the y axis
-        moveDirection.y = yStore;
-                
-        //Coutneract gravity so falling off of a ledge looks more normal
+        // moving checks
+        // TODO use for slowing movement to stop
+        if(moveDirection.magnitude > 0) {
+            isMoving = true;
+            Debug.Log("moving");
+        }
+        else {
+            isMoving = false;
+            Debug.Log("not moving");
+        }
+
+        // Reset the y axis
+        moveDirection.y = yStore;       
+
+        // Coutneract gravity so falling off of a ledge looks more normal
         if (theDude.isGrounded)
         {
-
             moveDirection.y = 0;
+            jumpNum = 0;
 
             //Jump when the space bar is pressed
             if (Input.GetButtonDown("Jump"))
             {
+                jumpNum += 1;
                 moveDirection.y = jumpForce;
             }
-
+        }
+        // check if player is allowed to double jump
+        else if(jumpNum < 2) {
+            // execute double jump
+            if (Input.GetButtonDown("Jump")) {
+                // when falling, jumpNum = 0, so add 2 to prevent
+                // double jump after falling from edge
+                jumpNum += 2;
+                moveDirection.y = jumpForce;
+            }
         }
 
-        //Account for gravity and normalization for fall speed
+        if(touchWall) {
+            if (Input.GetButtonDown("Jump")) {
+                // when falling, jumpNum = 0, so add 2 to prevent
+                // double jump after falling from edge
+                moveDirection.y = jumpForce;
+                // TODO make player only able to wall jump once
+                touchWall = false;
+            }
+        }
+
+        // Account for gravity and normalization for fall speed
         moveDirection.y = moveDirection.y + (gravityScale * Physics.gravity.y * Time.deltaTime);
 
-        //Move the character and normalize for framerate
+        // Move the character and normalize for framerate
         theDude.Move(moveDirection * Time.deltaTime);
 
         // Move the character based on the camera direction
@@ -71,4 +109,11 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + (Mathf.Abs(Input.GetAxis("Horizontal")))));
 
     }
+
+    void OnControllerColliderHit(ControllerColliderHit hit){
+         // entering collision with wall
+         if(hit.collider.tag == "Wall") {
+             touchWall = true;
+         }
+     }
 }
