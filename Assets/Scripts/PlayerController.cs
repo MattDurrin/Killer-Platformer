@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {   
         touchWall = false;
         isMoving = false;
+        
         // theDude = GetComponent<Rigidbody>();
         theDude = GetComponent<CharacterController>();
     }
@@ -40,7 +41,10 @@ public class PlayerController : MonoBehaviour
 
         // Move based on the x and y orientation
         moveDirection = (transform.forward * Input.GetAxis("Vertical") * moveSpeed) + (transform.right * Input.GetAxis("Horizontal") * moveSpeed);
-        moveDirection = moveDirection.normalized * moveSpeed;
+
+        // Removed to stop movement drift while running
+        // The avatar should stop immediately when you let up on the w key
+        //moveDirection = moveDirection.normalized * moveSpeed;
 
         // moving checks
         // TODO use for slowing movement to stop
