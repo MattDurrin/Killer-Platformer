@@ -5,6 +5,9 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour {
 
     public int value;
+
+    public GameObject pickupEffect;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +23,9 @@ public class ItemPickup : MonoBehaviour {
         if (other.tag == "Player")
         {
             FindObjectOfType<GameManager>().addItems(value);
+
+            Instantiate(pickupEffect, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
     }
