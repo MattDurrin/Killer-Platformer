@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     
     public float moveSpeed;
     public float jumpForce;
+    public float wallJumpForce;
     public CharacterController theDude;
     public float gravityScale;
     private Vector3 moveDirection;
@@ -20,13 +21,17 @@ public class PlayerController : MonoBehaviour
 
     private int jumpNum;
     private bool touchWall;
+    private bool isWallJumping;
+    private int lastTouchedWall;
+    private float timeStartWJ;
+    public float maxWallJumpTime;
+    private Vector3 wallDir;
 
     private bool isMoving;
 
     // Use this for initialization
     void Start()
     {   
-        touchWall = false;
         isMoving = false;
         
         // theDude = GetComponent<Rigidbody>();
@@ -47,14 +52,14 @@ public class PlayerController : MonoBehaviour
         //moveDirection = moveDirection.normalized * moveSpeed;
 
         // moving checks
-        // TODO use for slowing movement to stop
+        // TODO not used for anything yet
         if(moveDirection.magnitude > 0) {
             isMoving = true;
-            Debug.Log("moving");
+            //Debug.Log("moving");
         }
         else {
             isMoving = false;
-            Debug.Log("not moving");
+            //Debug.Log("not moving");
         }
 
         // Reset the y axis
@@ -63,8 +68,12 @@ public class PlayerController : MonoBehaviour
         // Coutneract gravity so falling off of a ledge looks more normal
         if (theDude.isGrounded)
         {
+            touchWall = false;
+            isWallJumping = false;
+            lastTouchedWall = 0;
             moveDirection.y = 0;
             jumpNum = 0;
+            wallDir = new Vector3(0,0,0);
 
             //Jump when the space bar is pressed
             if (Input.GetButtonDown("Jump"))
@@ -75,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
         // check if player is allowed to double jump
         else if(jumpNum < 2) {
-            // execute double jump
+            // double jump
             if (Input.GetButtonDown("Jump")) {
                 // when falling, jumpNum = 0, so add 2 to prevent
                 // double jump after falling from edge
@@ -85,13 +94,26 @@ public class PlayerController : MonoBehaviour
         }
 
         if(touchWall) {
+            // wall jump
             if (Input.GetButtonDown("Jump")) {
                 // when falling, jumpNum = 0, so add 2 to prevent
                 // double jump after falling from edge
                 moveDirection.y = jumpForce;
-                // TODO make player only able to wall jump once
                 touchWall = false;
+                isWallJumping = true;
+                timeStartWJ = Time.time;
             }
+            // if previously wall jumping and hit a wall but don't jump again
+            else {
+                isWallJumping = false;
+            }
+        }
+
+        // check if player is walljumping and if under max wall jump time
+        if(isWallJumping && (Time.time-timeStartWJ) <= maxWallJumpTime) {
+            // set the wall jump direction in direction normal to wall
+            moveDirection.x = wallJumpForce * wallDir.x;
+            moveDirection.z = wallJumpForce * wallDir.z;
         }
 
         // Account for gravity and normalization for fall speed
@@ -115,9 +137,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit){
-         // entering collision with wall
-         if(hit.collider.tag == "Wall") {
-             touchWall = true;
+         // entering collision with wall, change state only if not last wall
+         if(hit.collider.tag == "Wall" && lastTouchedWall != hit.collider.gameObject.GetInstanceID()) {
+            touchWall = true;
+            lastTouchedWall = hit.collider.gameObject.GetInstanceID();
+            wallDir = hit.normal;
          }
      }
 }
