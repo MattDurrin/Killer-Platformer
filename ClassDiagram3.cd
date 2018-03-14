@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MenuSceneLoader" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseMenu" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAQAAAAAAAAAAAAAQgAQgQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\SampleScenes\Menu\Scripts\PauseMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneAndURLLoader" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEA=</HashCode>
+      <FileName>Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraSwitch" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEQAAAAIIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\SampleScenes\Scripts\CameraSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelReset" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\SampleScenes\Scripts\LevelReset.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CameraController" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAABABCAAAAAAIAQAIAAAAAAAAAAQAAQAAAAABAA=</HashCode>
+      <FileName>Assets\Scripts\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestroyOverTime" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\DestroyOverTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAABAAAAAAEBAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemPickup" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAEAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ItemPickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAFCAAgAABAAACAACAAAAAgFgAAQAFASgAIAI=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.SceneUtils.ParticleSceneControls" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BtQAAAAIYAAAAggAAKAAAACAAQACAAAJIABAQAABgEA=</HashCode>
+      <FileName>Assets\SampleScenes\Scripts\ParticleSceneControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.SceneUtils.PlaceTargetWithMouse" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.SceneUtils.SlowMoButton" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAABIACAAAAAAAAAAAAAQBAAAAAAAACAAAQIAAAA=</HashCode>
+      <FileName>Assets\SampleScenes\Scripts\SlowMoButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
