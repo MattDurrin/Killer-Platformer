@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving;
 
+    private bool hasJumped;
+    private bool hasDoubleJumped;
+
     // Use this for initialization
     void Start()
     {   
@@ -41,6 +44,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        hasJumped = false;
+        hasDoubleJumped = false;
         // Save the y axis to keep jumping consistent
         float yStore = moveDirection.y;
 
@@ -78,6 +84,7 @@ public class PlayerController : MonoBehaviour
             //Jump when the space bar is pressed
             if (Input.GetButtonDown("Jump"))
             {
+                hasJumped = true;
                 jumpNum += 1;
                 moveDirection.y = jumpForce;
             }
@@ -88,6 +95,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump")) {
                 // when falling, jumpNum = 0, so add 2 to prevent
                 // double jump after falling from edge
+                hasDoubleJumped = true;
                 jumpNum += 2;
                 moveDirection.y = jumpForce;
             }
@@ -133,6 +141,8 @@ public class PlayerController : MonoBehaviour
         // Values used in the animations
         anim.SetBool("isGrounded", theDude.isGrounded);
         anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + (Mathf.Abs(Input.GetAxis("Horizontal")))));
+        anim.SetBool("doubleJump", hasDoubleJumped);
+        anim.SetBool("hasJumped", hasJumped);
 
     }
 
