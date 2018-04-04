@@ -2282,7 +2282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 784502554}
   - component: {fileID: 784502553}
-  - component: {fileID: 784502555}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2316,19 +2315,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &784502555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 784502552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4917fd211d4184da04433a2e41fe60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 5
 --- !u!1001 &815087844
 Prefab:
   m_ObjectHideFlags: 0
@@ -4768,34 +4754,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68412bada09ea694faa3493c29d807c3, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1672919929 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 39639071f8fd3cd4da6c9e24297512a2, type: 2}
-  m_PrefabInternal: {fileID: 630954184}
---- !u!65 &1672919933
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1672919929}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 6.1232336e-17}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1672919934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1672919929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2d1d5f061f7124fbfe429d48a9fdbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundDamage: 1
 --- !u!1001 &1752043783
 Prefab:
   m_ObjectHideFlags: 0
@@ -5421,8 +5379,6 @@ GameObject:
   - component: {fileID: 1919383287}
   - component: {fileID: 1919383286}
   - component: {fileID: 1919383285}
-  - component: {fileID: 1919383289}
-  - component: {fileID: 1919383290}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -5499,30 +5455,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1919383289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1919383284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2d1d5f061f7124fbfe429d48a9fdbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundDamage: 1
---- !u!65 &1919383290
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1919383284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1950925976
 Prefab:
   m_ObjectHideFlags: 0
