@@ -49,12 +49,17 @@ public class PlayerController : MonoBehaviour
 
     private bool hasJumped;
     private bool hasDoubleJumped;
+
+    // Fall damage
+    public int playerHealth;
+    private int fallDistance;
+
     // Use this for initialization
     void Start()
     {
         isMoving = false;
         moveSpeedStore = moveSpeed;
-
+        playerHealth = 100;
         // theDude = GetComponent<Rigidbody>();
         theDude = GetComponent<CharacterController>();
     }
@@ -65,6 +70,11 @@ public class PlayerController : MonoBehaviour
         hasJumped = false;
         hasDoubleJumped = false;
 
+        if (transform.position.y <= 1.5)
+        {
+            playerHealth -= 1;
+            FindObjectOfType<GameManager>().addPlayerHealth(playerHealth);
+        }
         // Save the y axis to keep jumping consistent
         float yStore = moveDirection.y;
 
@@ -244,4 +254,6 @@ public class PlayerController : MonoBehaviour
             touchWall = true;
         }
     }
+
 }
+
