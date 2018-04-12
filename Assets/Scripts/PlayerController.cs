@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     public float safeFallTime;
     private float fallTime;
     public float damagePerSecond;
+
+    // Player health
     public int playerHealth;
     
 
@@ -63,7 +65,6 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         moveSpeedStore = moveSpeed;
         playerHealth = 100;
-        // theDude = GetComponent<Rigidbody>();
         theDude = GetComponent<CharacterController>();
     }
 
@@ -73,23 +74,30 @@ public class PlayerController : MonoBehaviour
         hasJumped = false;
         hasDoubleJumped = false;
 
+        // Check for fall damage
         if (!theDude.isGrounded)
         {
             fallTime += Time.deltaTime;
         }
         else
         {
+            // Apply damage if the fall time exceeds the safe time
+            // Safe fall time is configurable in the Unity editor
             if (fallTime > safeFallTime)
             {
                 playerHealth -= (int)(fallTime * damagePerSecond);
             }
             fallTime = 0.0f;
         }
+
+        // Display players health on the panel
         if (transform.position.y <= 1.5)
         {
             playerHealth -= 1;
             FindObjectOfType<GameManager>().addPlayerHealth(playerHealth);
         }
+
+
         // Save the y axis to keep jumping consistent
         float yStore = moveDirection.y;
 
@@ -271,16 +279,11 @@ public class PlayerController : MonoBehaviour
 
         if(hit.collider.tag == "TrapDoor")
         {
-            /*
-            HingeJoint hinge = new HingeJoint();
-            JointSpring spring = hinge.spring;
-            spring.spring = 1000;
-            spring.targetPosition = 500;
-            hinge.useSpring = true;
-            hit.collider.gameObject.AddComponent<HingeJoint>(hinge);
-            */
-            SpringJoint sg = hit.collider.gameObject.AddComponent<SpringJoint>();
-            sg.spring = 1000;
+            
+            HingeJoint hingeJoint = hit.collider.gameObject.AddComponent<HingeJoint>();  //Platform swings on a hinge
+           
+            AudioSource audioSource = hit.collider.gameObject.GetComponent<AudioSource>();  //Get the objects audio source
+            audioSource.Play();  // HA HA!
             
             
                        
