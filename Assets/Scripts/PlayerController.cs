@@ -51,8 +51,11 @@ public class PlayerController : MonoBehaviour
     private bool hasDoubleJumped;
 
     // Fall damage
+    public float safeFallTime;
+    private float fallTime;
+    public float damagePerSecond;
     public int playerHealth;
-    private int fallDistance;
+    
 
     // Use this for initialization
     void Start()
@@ -70,6 +73,18 @@ public class PlayerController : MonoBehaviour
         hasJumped = false;
         hasDoubleJumped = false;
 
+        if (!theDude.isGrounded)
+        {
+            fallTime += Time.deltaTime;
+        }
+        else
+        {
+            if (fallTime > safeFallTime)
+            {
+                playerHealth -= (int)(fallTime * damagePerSecond);
+            }
+            fallTime = 0.0f;
+        }
         if (transform.position.y <= 1.5)
         {
             playerHealth -= 1;
@@ -253,7 +268,26 @@ public class PlayerController : MonoBehaviour
         {
             touchWall = true;
         }
+
+        if(hit.collider.tag == "TrapDoor")
+        {
+            /*
+            HingeJoint hinge = new HingeJoint();
+            JointSpring spring = hinge.spring;
+            spring.spring = 1000;
+            spring.targetPosition = 500;
+            hinge.useSpring = true;
+            hit.collider.gameObject.AddComponent<HingeJoint>(hinge);
+            */
+            SpringJoint sg = hit.collider.gameObject.AddComponent<SpringJoint>();
+            sg.spring = 1000;
+            
+            
+                       
+        }
+            
     }
+
 
 }
 

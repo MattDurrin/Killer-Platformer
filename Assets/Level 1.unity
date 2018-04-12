@@ -4786,6 +4786,14 @@ Prefab:
       propertyPath: m_Name
       value: open_book (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68412bada09ea694faa3493c29d807c3, type: 3}
+      propertyPath: m_TagString
+      value: TrapDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68412bada09ea694faa3493c29d807c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68412bada09ea694faa3493c29d807c3, type: 3}
   m_IsPrefabParent: 0
@@ -5055,6 +5063,8 @@ MonoBehaviour:
   pivot: {fileID: 35993197}
   rotateSpeed: 10
   playerModel: {fileID: 1961750913}
+  safeFallTime: 2
+  damagePerSecond: 30
   playerHealth: 102
 --- !u!23 &1802441778
 MeshRenderer:
@@ -5117,7 +5127,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1802441775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.13}
+  m_LocalPosition: {x: 0, y: 2, z: 0.13}
   m_LocalScale: {x: 1.4645934, y: 1.4645948, z: 1.4645948}
   m_Children:
   - {fileID: 1335245857}
@@ -5502,7 +5512,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 34d07c1811b169c4dba4f671cdea60bd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1c8c2158412da04479654326e901e6ec, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
