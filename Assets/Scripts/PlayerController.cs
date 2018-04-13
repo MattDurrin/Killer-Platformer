@@ -49,13 +49,22 @@ public class PlayerController : MonoBehaviour
 
     private bool hasJumped;
     private bool hasDoubleJumped;
+
+    // Fall damage
+    public float safeFallTime;
+    private float fallTime;
+    public float damagePerSecond;
+
+    // Player health
+    public int playerHealth;
+    
+
     // Use this for initialization
     void Start()
     {
         isMoving = false;
         moveSpeedStore = moveSpeed;
-
-        // theDude = GetComponent<Rigidbody>();
+        playerHealth = 100;
         theDude = GetComponent<CharacterController>();
     }
 
@@ -64,6 +73,30 @@ public class PlayerController : MonoBehaviour
     {
         hasJumped = false;
         hasDoubleJumped = false;
+
+        // Check for fall damage
+        if (!theDude.isGrounded)
+        {
+            fallTime += Time.deltaTime;
+        }
+        else
+        {
+            // Apply damage if the fall time exceeds the safe time
+            // Safe fall time is configurable in the Unity editor
+            if (fallTime > safeFallTime)
+            {
+                playerHealth -= (int)(fallTime * damagePerSecond);
+            }
+            fallTime = 0.0f;
+        }
+
+        // Display players health on the panel
+        if (transform.position.y <= 1.5)
+        {
+            playerHealth -= 1;
+            FindObjectOfType<GameManager>().addPlayerHealth(playerHealth);
+        }
+
 
         // Save the y axis to keep jumping consistent
         float yStore = moveDirection.y;
@@ -243,5 +276,25 @@ public class PlayerController : MonoBehaviour
         {
             touchWall = true;
         }
+
+        if(hit.collider.tag == "TrapDoor")
+        {
+
+            //hit.collider.gameObject.AddComponent<HingeJoint>().useSpring.Equals(true);
+            //HingeJoint hingeJoint = hit.collider.gameObject.AddComponent<HingeJoint>();  //Platform swings on a hinge
+           
+            AudioSource audioSource = hit.collider.gameObject.GetComponent<AudioSource>();  //Get the objects audio source
+            audioSource.Play();  // HA HA!
+            
+            
+                       
+        }
+
+        
     }
+
+    
+
+
 }
+

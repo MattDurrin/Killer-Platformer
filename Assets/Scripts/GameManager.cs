@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour {
 
     public int currentItems;
     public Text itemText;
-
+    public Text pHealth;
+    public int playersHealth;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,5 +24,14 @@ public class GameManager : MonoBehaviour {
     {
         currentItems += itemsToAdd;
         itemText.text = "Pages: " + currentItems;
+           /* + "\nHealth: " + player.playerHealth;*/
+
+
+    }
+
+    public void addPlayerHealth(int playerHealth)
+    {
+        playersHealth = playerHealth;
+        pHealth.text = "Health: " + playersHealth;
     }
 }
