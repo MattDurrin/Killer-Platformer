@@ -283,14 +283,22 @@ public class PlayerController : MonoBehaviour
             HingeJoint hingeJoint = hit.collider.gameObject.AddComponent<HingeJoint>();  //Platform swings on a hinge
            
             AudioSource audioSource = hit.collider.gameObject.GetComponent<AudioSource>();  //Get the objects audio source
-            audioSource.Play();  // HA HA!
-            
-            
+            audioSource.Play();  // HA HA!            
                        
         }
-            
+        
+        if(hit.collider.tag == "Raft")
+        {
+
+            theDude.transform.SetParent(hit.collider.gameObject.transform);
+        }
+        else
+        {
+            theDude.transform.SetParent(null);
+        }
+           
     }
 
-
+    
 }
 
