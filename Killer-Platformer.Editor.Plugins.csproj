@@ -315,7 +315,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset_Imports\PixelMake\CanyonPack\READ ME!.txt" />
-    <None Include="Assets\Flames Of The Phoenix\READ_ME.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Lava_Flowing_Shader\ReadMe.txt" />
     <None Include="Assets\Lava_Flowing_Shader\Shaders\Diffuse_Lava_Distort.shader" />

@@ -326,6 +326,7 @@
     <Compile Include="Assets\Scripts\DropMe.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\MoveOnRaft.cs" />
     <Compile Include="Assets\Scripts\PanelManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ResizePanel.cs" />
@@ -368,7 +369,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Asset_Imports\PixelMake\CanyonPack\READ ME!.txt" />
-    <None Include="Assets\Flames Of The Phoenix\READ_ME.txt" />
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Lava_Flowing_Shader\ReadMe.txt" />
     <None Include="Assets\Lava_Flowing_Shader\Shaders\Diffuse_Lava_Distort.shader" />
