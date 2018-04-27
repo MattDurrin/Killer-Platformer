@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = false;
         hasJumped = false;
         hasDoubleJumped = false;
 

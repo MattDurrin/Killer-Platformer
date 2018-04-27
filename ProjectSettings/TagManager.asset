@@ -8,6 +8,7 @@ TagManager:
   - SpringTrap
   - TrapDoor
   - Raft
+  - Portal
   layers:
   - Default
   - TransparentFX
